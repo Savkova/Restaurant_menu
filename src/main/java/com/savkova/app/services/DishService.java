@@ -58,8 +58,6 @@ public class DishService {
                 sumWeight += d.getWeight();
                 result.add(d);
             }
-            else
-                continue;
         }
         return result;
     }
