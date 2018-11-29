@@ -37,9 +37,14 @@ public class DishEntityDao extends EntityDao<Long, Dish> implements DishDao {
     }
 
     @Override
-    public List<Dish> getRandomDishesWeightingUpToOneKilo(Long menuId) {
-        return null;
-        //TODO
+    public List<Dish> getDishesLessOneKilo(Long menuId) {
+        String select = "SELECT d FROM Dish d INNER JOIN d.menu m " +
+                "where d.weight <= 1000 and m.id = :menuId";
+
+        Query query = entityManager.createQuery(select, Dish.class);
+        query.setParameter("menuId", menuId);
+
+        return (List<Dish>) query.getResultList();
     }
 
 }

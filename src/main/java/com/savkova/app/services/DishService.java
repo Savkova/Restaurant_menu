@@ -42,4 +42,26 @@ public class DishService {
         return dishDao.getDishesWithDiscount(menuId);
     }
 
+    public List<Dish> getRandomDishesWithTotalWeightLessOneKilo(Long menuId) {
+        List<Dish> dishesLessOneKilo = dishDao.getDishesLessOneKilo(menuId);
+        List<Dish> result = new ArrayList<>();
+
+        Random random = new Random();
+        Dish firstRandomDish = dishesLessOneKilo.get(random.nextInt(dishesLessOneKilo.size()));
+
+        Double sumWeight = firstRandomDish.getWeight();
+        result.add(firstRandomDish);
+        dishesLessOneKilo.remove(firstRandomDish);
+
+        for (Dish d : dishesLessOneKilo) {
+            if (sumWeight + d.getWeight() < 1000) {
+                sumWeight += d.getWeight();
+                result.add(d);
+            }
+            else
+                continue;
+        }
+        return result;
+    }
+
 }

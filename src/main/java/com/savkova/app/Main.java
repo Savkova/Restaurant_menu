@@ -30,9 +30,12 @@ public class Main {
             DishService dishService = new DishService(em);
             regularMenu = menuService.findById(1L);
             dishService.create(new Dish(regularMenu, "Soup", 55.0, 130.0, 5));
-            dishService.create(new Dish(regularMenu, "Dorado", 230.0, 200.0));
+            dishService.create(new Dish(regularMenu, "Dorado", 230.0, 300.0));
             dishService.create(new Dish(regularMenu, "Cheese Plate", 80.0, 150.0, 7));
             dishService.create(new Dish(regularMenu, "Vegetables", 65.0, 550.0));
+            dishService.create(new Dish(regularMenu, "Meat", 800.0, 3000.0));
+            dishService.create(new Dish(regularMenu, "Sauce", 30.0, 50.0));
+
 
             Dish dish = dishService.findById(2L);
             dish.setDiscount(30);
@@ -40,7 +43,7 @@ public class Main {
 
             menuService.delete(2L);
 
-            List<Dish> dishesFromToByPrice = dishService.getDishesByPrice(50.0, 200.0, 1L);
+            List<Dish> dishesFromToByPrice = dishService.getDishesByPrice(50.0, 300.0, 1L);
             for (Dish d : dishesFromToByPrice) {
                 System.out.println(d);
             }
@@ -50,13 +53,17 @@ public class Main {
                 System.out.println(d);
             }
 
+            List<Dish> dishesTotalLessOneKilo = dishService.getRandomDishesWithTotalWeightLessOneKilo(1L);
+            for (Dish d : dishesTotalLessOneKilo) {
+                System.out.println(d);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             em.close();
             emf.close();
         }
-
-
     }
+
 }
