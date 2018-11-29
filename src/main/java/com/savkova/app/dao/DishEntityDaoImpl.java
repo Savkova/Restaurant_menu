@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
-public class DishEntityDao extends EntityDao<Long, Dish> implements DishDao {
+public class DishEntityDaoImpl extends EntityDao<Long, Dish> implements DishDao {
 
-    public DishEntityDao(EntityManager em) {
+    public DishEntityDaoImpl(EntityManager em) {
         super(em);
     }
 

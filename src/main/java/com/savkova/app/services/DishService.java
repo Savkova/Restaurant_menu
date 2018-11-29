@@ -1,7 +1,7 @@
 package com.savkova.app.services;
 
 import com.savkova.app.dao.DishDao;
-import com.savkova.app.dao.DishEntityDao;
+import com.savkova.app.dao.DishEntityDaoImpl;
 import com.savkova.app.entities.Dish;
 import com.savkova.app.exceptions.MyDbException;
 
@@ -15,7 +15,7 @@ public class DishService {
     private DishDao dishDao;
 
     public DishService(EntityManager em) {
-        this.dishDao = new DishEntityDao(em);
+        this.dishDao = new DishEntityDaoImpl(em);
     }
 
     public void create(Dish dish) throws MyDbException {

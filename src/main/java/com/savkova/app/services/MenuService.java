@@ -1,7 +1,7 @@
 package com.savkova.app.services;
 
 import com.savkova.app.dao.MenuDao;
-import com.savkova.app.dao.MenuEntityDao;
+import com.savkova.app.dao.MenuEntityDaoImpl;
 import com.savkova.app.entities.Menu;
 import com.savkova.app.exceptions.MyDbException;
 
@@ -12,7 +12,7 @@ public class MenuService {
     private MenuDao menuDao;
 
     public MenuService(EntityManager em) {
-        this.menuDao = new MenuEntityDao(em);
+        this.menuDao = new MenuEntityDaoImpl(em);
     }
 
     public void create(Menu menu) throws MyDbException {
