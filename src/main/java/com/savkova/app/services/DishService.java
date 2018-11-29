@@ -6,7 +6,9 @@ import com.savkova.app.entities.Dish;
 import com.savkova.app.exceptions.MyDbException;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class DishService {
 
@@ -32,11 +34,11 @@ public class DishService {
         dishDao.delete(dishDao.findById(id));
     }
 
-    public List<Dish> getDishesByPrice(Double from, Double to, Long menuId){
+    public List<Dish> getDishesByPrice(Double from, Double to, Long menuId) {
         return dishDao.getDishesByPrice(from, to, menuId);
     }
 
-    public List<Dish> getDishesWithDiscount(Long menuId){
+    public List<Dish> getDishesWithDiscount(Long menuId) {
         return dishDao.getDishesWithDiscount(menuId);
     }
 

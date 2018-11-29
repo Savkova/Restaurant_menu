@@ -10,6 +10,6 @@ public interface DishDao extends Dao<Long, Dish> {
 
     List<Dish> getDishesWithDiscount(Long menuId);
 
-    List<Dish> getRandomDishesWeightingUpToOneKilo(Long menuId);
+    List<Dish> getDishesLessOneKilo(Long menuId);
 
 }
