@@ -54,7 +54,7 @@ public class DishService {
         dishesLessOneKilo.remove(firstRandomDish);
 
         for (Dish d : dishesLessOneKilo) {
-            if (sumWeight + d.getWeight() < 1000) {
+            if (sumWeight + d.getWeight() <= 1000) {
                 sumWeight += d.getWeight();
                 result.add(d);
             }
